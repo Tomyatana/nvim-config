@@ -7,7 +7,6 @@ return {
 		event = { "InsertEnter", "CmdlineEnter" },
 	},
 	{ 'hrsh7th/cmp-nvim-lsp-signature-help' },
-	{ 'hrsh7th/cmp-path' },
 	{ 'williamboman/mason.nvim' },
 	{'williamboman/mason-lspconfig.nvim'},
 	{
