@@ -138,6 +138,42 @@ local kind_icons = {
   TypeParameter = "󰅲",
 }
 
+local highlights = {
+	CmpItemMenu = { bg='#504945', fg='#928374' },
+
+	CmpItemAbbr = { bg='#504945', fg='#32302f' },
+
+	CmpItemAbbrDeprecated = { bg='#fb5944', strikethrough=true, fg='#808080' },
+
+	CmpItemAbbrMatch = { bg='#504945', fg='#569CD6' },
+	CmpItemAbbrMatchFuzzy = { link='CmpIntemAbbrMatch' },
+
+	CmpItemKindText = { bg='#504945', fg="#ebdbb2" },
+
+	CmpItemKindVariable = { bg='#504945', fg='#83a598' },
+	CmpItemKindInterface = { link='CmpItemKindVariable' },
+	CmpItemKindReference = { link='CmpItemKindVariable' },
+	CmpItemKindField = { link='CmpItemKindVariable' },
+	CmpItemKindProperty = { link='CmpItemKindField' },
+
+	CmpItemKindFunction = { bg='#504945', fg='#79740e' },
+	CmpItemKindMethod = { link='CmpItemKindFunction' },
+
+	CmpItemKindKeyword = { bg='#504945', fg='#fb5944' },
+	CmpItemKindUnit = { link='CmpItemKindKeyword' },
+
+	CmpItemKindSnippet = { bg='#504945', fg='#427b58' },
+
+	CmpItemKindConstant = { bg='#504945', fg='#8f3f71' },
+
+	CmpItemKindStruct = { bg='#504945', fg='#fe8019' },
+	CmpItemKindEnum = { link="CmpItemKindStruct" },
+	CmpItemKindModule = { link="CmpItemKindStruct" },
+
+	CmpItemKindTypeParameter = { bg='#504945', fg='#fabd2f' },
+	CmpItemKindTypeInterface = { link="CmpItemKindTypeParameter" },
+}
+
 cmp.setup ({
     sources = cmp.config.sources(
         {
@@ -147,10 +183,6 @@ cmp.setup ({
             { name = "nvim_lsp_signature_help" },
         }
     ),
-	window = {
-	    completion = cmp.config.window.bordered(),
-	    documentation = cmp.config.window.bordered(),
-	},
     mapping = {
         ['<Tab>'] = cmp.mapping.confirm({ select = true }),
         ['<C-k>'] = cmp.mapping(function(fallback)
@@ -167,6 +199,18 @@ cmp.setup ({
 				fallback()
 			end
 		end),
+	},
+	window = {
+	    completion = {
+			winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+			col_offset = 1,
+			side_padding = 0,
+			border = "shadow"
+		},
+	    documentation = cmp.config.window.bordered(),
+	},
+	view = {
+		entries = { name = "custom" }
 	},
 	formatting = {
 		format = function(entry, vim_item)
