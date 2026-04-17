@@ -1,5 +1,11 @@
 require("netrw").setup({})
+
 vim.cmd("colorscheme retrobox")
+
+vim.opt.list = true;
+vim.opt.listchars = {tab = '··', space='·', trail='\\', nbsp='_', eol='|' }
+	
+-- cmp style
 
 vim.api.nvim_set_hl(0, 'Pmenu', { bg='#3c3836', fg='#665c55' })
 
@@ -36,3 +42,5 @@ vim.api.nvim_set_hl(0, 'CmpItemKindModule', { link="CmpItemKindStruct" })
 
 vim.api.nvim_set_hl(0, 'CmpItemKindTypeParameter', { bg='NONE', fg='#fabd2f' })
 vim.api.nvim_set_hl(0, 'CmpItemKindTypeInterface', { link="CmpItemKindTypeParameter" })
+
+
