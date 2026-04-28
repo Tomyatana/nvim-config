@@ -1,20 +1,20 @@
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
+		branch = "main",
 		build = ":TSUpdate",
 		config = function ()
-			local configs = require("nvim-treesitter.configs")
+			local treesitter = require("nvim-treesitter")
 
-			configs.setup({
-				ensure_installed = { "c", "vimdoc", "c_sharp", "rust", "lua", "query", "markdown", },
-                auto_install = true,
-                -- both don't do wel without internet
-                ignore_install = {""},
-				sync_install = true,
-				highlight = { enable = true },
-				indent = { enable = true },
-                incremental_selection = { enable = true },
-            })
+			local parsers = {"c", "rust", "vimdoc", "lua", "query", "markdown", "cpp", "zig", "python"}
+
+			treesitter.setup()
+			treesitter.install(parsers)
+
+			vim.api.nvim_create_autocmd("FileType", {
+				pattern = parsers,
+				callback = function() vim.treesitter.start() end
+			})
 		end
 	}
 }
