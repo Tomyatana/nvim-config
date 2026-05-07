@@ -6,7 +6,7 @@ return {
 		config = function ()
 			local treesitter = require("nvim-treesitter")
 
-			local parsers = {"c", "rust", "vimdoc", "lua", "query", "markdown", "cpp", "zig", "python"}
+			local parsers = {"c", "rust", "vimdoc", "lua", "query", "markdown", "cpp", "zig", "python", "make"}
 
 			treesitter.setup()
 			treesitter.install(parsers)
